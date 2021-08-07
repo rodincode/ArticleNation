@@ -1,0 +1,85 @@
+{% extends 'ArticleNation/index.html' %}
+{% load static %}
+{% block content %}
+<!--
+https://medium.com/
+-->
+
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img src="{% static 'mech.jpg' %}" class="d-block w-100" alt="..." width="100px" height="500px" style="object-fit: cover;">
+          <div class="carousel-caption d-none d-md-block">
+            <h5> {{ Post1 }} </h5>
+            <p> {{ Post1.content }}
+              </p>
+          </div> 
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="{% static 'hack.jpg' %}" class="d-block w-100" alt="..." width="100px" height="500px" style="object-fit: cover;">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ Post2 }}</h5>
+          <p>{{ Post2.content }}</p>
+        </div> 
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'bday.jpg' %}" class="d-block w-100" alt="..." width="100px" height="500px" style="object-fit: cover;">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ Post3 }}</h5>
+          <p> {{ Post3.content }}</p>
+        </div> 
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+
+    </button>
+  </div>
+
+
+{%for i in Data %}
+<div class="content">
+  <div class= "show" style = 'margin : 10px;'> 
+
+      <h1>{{ i.title }}</h1>
+      <p>{{ i.content }}</p>
+      <blockquote class="blockquote">
+          <footer class="blockquote-footer"><cite title="Source Title">{{ i.author }}</cite></footer>
+      </blockquote>
+
+  </div>
+  <table style="height: 100px;">
+    <tr style='margin:20px;text-align: center;'>
+    
+    <td>
+      <form action="{% url 'likes' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" name='likesbutton' value = "{{ i.id }}" style='background:white;outline:none;border:none;'><i id="icon"
+          class="fa fa-thumbs-up" 
+        style = 'margin : 10px;padding :10px; font-size: 30px;
+        color: rgb(255, 255, 255);background: rgb(59, 235, 6);'
+          aria-hidden="true"></i></button>
+
+      </form>
+      
+      <td id="number"> {{ i.numberoflikes }} Likes </td>
+    </td>
+    </tr>  
+  </table>
+</div>
+<hr>
+{% endfor %}
+  
+
+<!--
+  <If > <else>
+     -->
+
+
+
+{% endblock %}

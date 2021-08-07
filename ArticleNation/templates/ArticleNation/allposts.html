@@ -1,0 +1,26 @@
+{% extends 'ArticleNation/index.html' %}
+{% load static %}
+{% block content %}
+
+{%for i in Data %}
+
+<div style = 'margin : 10px;padding :auto;'> 
+
+    <h1>{{ i.title }}</h1>
+    <p>{{ i.content }}</p>
+    <blockquote class="blockquote">
+        <footer class="blockquote-footer"><cite title="Source Title">{{ i.author }}</cite></footer>
+    </blockquote>
+<form action="{% url 'home' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="fa fa-thumbs-up" 
+    style = 'margin : 10px;padding :10px; font-size: 30px;
+     color: rgb(0, 26, 255);background: rgb(255, 0, 0);'
+      aria-hidden="true" name = "article_id"
+    value = "{{ article.id }}"></button>
+</form>
+</div>
+
+{% endfor %}
+
+{% endblock %}

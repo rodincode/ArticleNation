@@ -1,0 +1,40 @@
+.fa {
+    padding : 50px;
+    width: auto;
+    height: auto;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px;
+    border-radius: 20%;
+}
+
+.fa-facebook{
+    background: blue;
+    color: white;
+}
+
+.fa-envelope{
+    background: red;
+    color: white;
+}
+
+.fa-instagram{
+    background: rgb(233, 10, 233);
+    color: white;
+}
+
+/*start from here*/
+
+#number{
+    vertical-align: middle;
+}
+
+#icon{
+    vertical-align: middle;    
+}
+
+.content{
+    height:300px;
+    font-size: 14pt;
+}
+

@@ -1,0 +1,25 @@
+
+{% extends 'ArticleNation/index.html' %}
+{% load static %}
+{% block content %}
+
+<center>
+{% for result in all_search_results %}
+   <br>
+   <br>
+   <h3>{{ result.title }}</h3>
+   <p>{{ result.content }}</p>
+   <p><i> - {{ result.author }}</i></p>
+   <br> 
+   <hr>
+{% empty %}
+<br>
+
+   <h3> No results found. Please try a different keyword. </h3>
+   
+<br>
+{% endfor %}
+</center>
+
+
+{% endblock %}

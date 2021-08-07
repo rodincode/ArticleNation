@@ -1,0 +1,31 @@
+{% extends 'ArticleNation/index.html' %}
+{% load static %}
+{% block content %}
+
+<center>
+<form method = 'POST' style = 'width : 500px;height :auto;'>
+    {% csrf_token %}
+    <!--
+    <div class="form-group" style="margin: 50px;">
+      <label for="Name">Name</label>
+      <input class="form-control" placeholder="Anonymous">
+    </div>
+
+    <div class="form-group" style="margin: 50px;">
+        <label for="Title">Title</label>
+        <input type="text" class="form-control" placeholder="Title">
+      </div>
+
+    <div class="form-group" style="margin: 50px;">
+      <label for="Matter">Content</label>
+      <textarea class="form-control" rows="10"></textarea>
+    </div>
+    -->
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Post" >
+    <br>
+
+</form>
+</center>
+<br>
+{% endblock %}

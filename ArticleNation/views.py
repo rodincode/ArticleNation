@@ -121,11 +121,17 @@ def thankyou(request):
 def allposts(request):
     Data = Article.objects.order_by('title')
     #print(Data)
-    count = Article.objects.get(author= 'Mr. India')
-    print(count)
-    return render(request, 'ArticleNation/allposts.html',{"Data":Data,"count":count})
+    return render(request, 'ArticleNation/allposts.html',{"Data":Data})
 
-
+def article_detail(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            Data = get_object_or_404(Article,id=request.POST.get('likesbutton'))
+            Data.likes.add(request.user)
+        return HttpResponseRedirect(reverse('article_detail',kwargs={'pk': pk}))
+    return render(request, 'ArticleNation/article_detail.html', {'article': article})
 
 class SearchView(ListView):
     model = Article

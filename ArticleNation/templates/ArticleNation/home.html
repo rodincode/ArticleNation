@@ -7,28 +7,34 @@ https://medium.com/
 
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
+      <a href="{% url 'article_detail' pk=Post1.pk %}" style="text-decoration: none;"></a>
       <div class="carousel-item active" data-bs-interval="10000">
         <img src="{% static 'mech.jpg' %}" class="d-block w-100" alt="..." width="100px" height="500px" style="object-fit: cover;">
           <div class="carousel-caption d-none d-md-block">
             <h5> {{ Post1 }} </h5>
-            <p> {{ Post1.content }}
+            <p> {{ Post1.content|truncatechars:500 }}
               </p>
           </div> 
       </div>
+      </a>
+      <a href="{% url 'article_detail' pk=Post2.pk %}" style="text-decoration: none;">
       <div class="carousel-item" data-bs-interval="2000">
         <img src="{% static 'hack.jpg' %}" class="d-block w-100" alt="..." width="100px" height="500px" style="object-fit: cover;">
         <div class="carousel-caption d-none d-md-block">
           <h5>{{ Post2 }}</h5>
-          <p>{{ Post2.content }}</p>
+          <p>{{ Post2.content|truncatechars:500 }}</p>
         </div> 
       </div>
+      </a>
+      <a href="{% url 'article_detail' pk=Post3.pk %}" style="text-decoration: none;">
       <div class="carousel-item">
         <img src="{% static 'bday.jpg' %}" class="d-block w-100" alt="..." width="100px" height="500px" style="object-fit: cover;">
         <div class="carousel-caption d-none d-md-block">
           <h5>{{ Post3 }}</h5>
-          <p> {{ Post3.content }}</p>
+          <p> {{ Post3.content|truncatechars:500 }}</p>
         </div> 
       </div>
+      </a>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -43,16 +49,19 @@ https://medium.com/
 
 
 {%for i in Data %}
-<div class="content">
+<a href="{% url 'article_detail' pk=i.pk %}" class="bd-highlight" style="text-decoration: none; color: inherit;"
+  onMouseOver="this.style.color='#808080'" onMouseOut="this.style.color='inherit' "> 
+<div class="content" style="margin:10px; padding:5px;">
   <div class= "show" style = 'margin : 10px;'> 
 
       <h1>{{ i.title }}</h1>
-      <p>{{ i.content }}</p>
+      <p>{{ i.content|truncatechars:500 }}</p>
       <blockquote class="blockquote">
           <footer class="blockquote-footer"><cite title="Source Title">{{ i.author }}</cite></footer>
       </blockquote>
 
   </div>
+  </a>
   <table style="height: 100px;">
     <tr style='margin:20px;text-align: center;'>
     

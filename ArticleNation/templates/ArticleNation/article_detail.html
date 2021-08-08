@@ -1,0 +1,47 @@
+{% extends 'ArticleNation/index.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container" style=" width:auto; margin-left: 20px; margin-right: 20px; padding:10px;">
+<center>
+    <H1>{{ article.title }}</H1>
+</center>
+<br>
+<hr>
+<br>
+    <p>
+        {{ article.content|linebreaksbr }}
+    </p>
+<br>
+
+    <blockquote class="blockquote">
+        <footer class="blockquote-footer"><cite title="Source Title"> {{ article.author }} </cite></footer>
+    </blockquote>
+    <!--<If > <else> -->
+
+        <table style="height: 100px;">
+            <tr style='margin:20px;text-align: center;'>
+            
+            <td>
+              <form action="{% url 'article_detail' pk=article.pk %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" name='likesbutton' value = "{{ article.id }}" style='background:white;outline:none;border:none;'><i id="icon"
+                  class="fa fa-thumbs-up" 
+                style = 'margin : 10px;padding :10px; font-size: 30px;
+                color: rgb(255, 255, 255);background: rgb(59, 235, 6);'
+                  aria-hidden="true"></i></button>
+        
+              </form>
+              
+              <td id="number"> {{ article.numberoflikes }} Likes </td>
+            </td>
+            </tr>  
+          </table>
+
+<center>
+    <a href="https://www.github.com/rodincode" class="fa fa-github"></a>
+    <a href="https://www.linkedin.com/in/rohan247/" class="fa fa-linkedin"></a>
+    <a href="https://www.twitter.com/rodin_code/" class="fa fa-twitter"></a>
+</center>
+</div>
+{% endblock %}

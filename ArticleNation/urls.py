@@ -14,6 +14,7 @@ urlpatterns = [
     path('post', post_article, name = 'post'),
     path('thankyou', thankyou, name = 'thankyou'),
     path('allposts', allposts, name = 'allposts'),
+    path('article/<int:pk>/', article_detail, name='article_detail'),
     path('likes', homepagewithlikes, name= "likes"),
     path('login/', Login, name ='login'),
     path('logout/', auth.LogoutView.as_view(template_name ='ArticleNation/logout.html'), name ='logout'),
